@@ -12,6 +12,13 @@
   --color-accent-cyan: #4cc9f0;
   --color-hero-bg: #fff0f7;
   --font-sans: var(--font-poppins);
+
+  /* Custom breakpoints — sm: first multi-col step, md: desktop layout threshold */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 800px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 /* Reset dark mode — portfolio uses a fixed light design */

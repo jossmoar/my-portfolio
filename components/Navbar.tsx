@@ -2,16 +2,19 @@
 
 // Sticky top navigation — collapses to hamburger on mobile
 import { useState } from "react";
-
-const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Habilidades", href: "#habilidades" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Experiencia", href: "#experiencia" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { t, locale, toggleLocale } = useLanguage();
+
+  const navLinks = [
+    { label: t.nav.inicio, href: "#inicio" },
+    { label: t.nav.habilidades, href: "#habilidades" },
+    { label: t.nav.proyectos, href: "#proyectos" },
+    { label: t.nav.experiencia, href: "#experiencia" },
+    { label: t.nav.certificaciones, href: "#certificaciones" },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
@@ -35,13 +38,24 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA button */}
-        <a
-          href="#contacto"
-          className="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors"
-        >
-          Contáctame
-        </a>
+        {/* Desktop right actions */}
+        <div className="hidden md:flex items-center gap-3">
+          {/* Language toggle */}
+          <button
+            onClick={toggleLocale}
+            className="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 hover:border-brand hover:text-brand transition-colors"
+            aria-label="Switch language"
+          >
+            {locale === "es" ? "EN" : "ES"}
+          </button>
+
+          <a
+            href="#contacto"
+            className="inline-flex items-center px-5 py-2 rounded-full bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors"
+          >
+            {t.nav.contactame}
+          </a>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -49,15 +63,9 @@ export default function Navbar() {
           onClick={() => setOpen(!open)}
           aria-label="Abrir menú"
         >
-          <span
-            className={`block w-5 h-0.5 bg-gray-700 transition-all ${open ? "rotate-45 translate-y-2" : ""}`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-gray-700 transition-all ${open ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-gray-700 transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`}
-          />
+          <span className={`block w-5 h-0.5 bg-gray-700 transition-all ${open ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-5 h-0.5 bg-gray-700 transition-all ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-5 h-0.5 bg-gray-700 transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </nav>
 
@@ -76,14 +84,20 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
-            <li>
+            <li className="flex items-center gap-3 pt-1">
               <a
                 href="#contacto"
                 className="inline-flex items-center px-5 py-2 rounded-full bg-brand text-white text-sm font-semibold"
                 onClick={() => setOpen(false)}
               >
-                Contáctame
+                {t.nav.contactame}
               </a>
+              <button
+                onClick={toggleLocale}
+                className="text-xs font-semibold px-3 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-brand hover:text-brand transition-colors"
+              >
+                {locale === "es" ? "EN" : "ES"}
+              </button>
             </li>
           </ul>
         </div>

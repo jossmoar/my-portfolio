@@ -1,5 +1,8 @@
+"use client";
+
 // Hero section — matches the provided design mockup exactly
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Social link icons as inline SVGs to avoid icon lib dependency
 function GithubIcon() {
@@ -38,10 +41,12 @@ function Diamond({ className }: { className: string }) {
 }
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center bg-[#fff0f7] overflow-hidden pt-16"
+      className="relative min-h-screen flex items-center bg-hero-bg overflow-x-hidden pt-16"
     >
       {/* Background gradient blob — the pink glow behind the photo */}
       <div
@@ -55,26 +60,25 @@ export default function Hero() {
 
       {/* Floating decorative diamonds */}
       <Diamond className="w-5 h-5 bg-[#ff9f1c] opacity-80 top-[22%] right-[14%]" />
-      <Diamond className="w-3.5 h-3.5 bg-[#4cc9f0] opacity-80 top-[35%] right-[8%]" />
-      <Diamond className="w-4 h-4 bg-[#f72585] opacity-60 top-[60%] right-[18%]" />
-      <Diamond className="w-6 h-6 bg-[#ff9f1c] opacity-50 top-[72%] right-[6%]" />
-      <Diamond className="w-3 h-3 bg-[#7209b7] opacity-70 top-[18%] right-[40%]" />
-      <Diamond className="w-4 h-4 bg-[#4cc9f0] opacity-50 top-[80%] left-[12%]" />
+      <Diamond className="w-3.5 h-3.5 bg-accent-cyan opacity-80 top-[35%] right-[8%]" />
+      <Diamond className="w-4 h-4 bg-brand opacity-60 top-[60%] right-[18%]" />
+      <Diamond className="w-6 h-6 bg-accent-orange opacity-50 top-[72%] right-[6%]" />
+      <Diamond className="w-3 h-3 bg-purple opacity-70 top-[18%] right-[40%]" />
+      <Diamond className="w-4 h-4 bg-accent-cyan opacity-50 top-[80%] left-[12%]" />
 
-      <div className="relative max-w-6xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center py-20">
+      <div className="relative max-w-6xl mx-auto px-6 w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center py-12 md:py-20">
         {/* LEFT — text content */}
         <div className="flex flex-col gap-5 z-10">
-          <p className="text-lg text-gray-600 font-medium">Hola, soy</p>
+          <p className="text-lg text-gray-600 font-medium">{t.hero.greeting}</p>
 
-          <h1 className="text-5xl md:text-6xl font-extrabold text-[#1a1a2e] leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1a1a2e] leading-tight">
             Joselin Montero
           </h1>
 
-          <p className="text-2xl font-semibold text-brand">Frontend Developer</p>
+          <p className="text-xl sm:text-2xl font-semibold text-brand">{t.hero.role}</p>
 
           <p className="text-gray-500 text-base leading-relaxed max-w-md">
-            Especializada en crear experiencias web bonitas, funcionales y
-            escalables que conectan con los usuarios.
+            {t.hero.bio}
           </p>
 
           {/* CTA buttons */}
@@ -83,14 +87,14 @@ export default function Hero() {
               href="#proyectos"
               className="px-7 py-3 rounded-full bg-brand text-white font-semibold text-sm hover:bg-brand-dark transition-colors shadow-md shadow-pink-200"
             >
-              Ver Proyectos
+              {t.hero.ctaProjects}
             </a>
             <a
               href="/cv/joselin-montero-cv.pdf"
               download
               className="px-7 py-3 rounded-full border-2 border-brand text-brand font-semibold text-sm hover:bg-brand hover:text-white transition-colors"
             >
-              Descargar CV
+              {t.hero.ctaCv}
             </a>
           </div>
 
@@ -125,37 +129,42 @@ export default function Hero() {
         </div>
 
         {/* RIGHT — profile photo with gradient ring */}
-        <div className="relative flex items-center justify-center z-10">
-          {/* Outer gradient ring */}
-          <div
-            className="relative w-72 h-72 md:w-80 md:h-80 rounded-full p-1"
-            style={{
-              background: "linear-gradient(135deg, #f72585 0%, #7209b7 50%, #4cc9f0 100%)",
-            }}
-          >
-            {/* Inner photo container */}
-            <div className="w-full h-full rounded-full overflow-hidden bg-[#fce7f3]">
-              <Image
-                src="/images/select.png"
-                alt="Joselin Montero"
-                width={320}
-                height={320}
-                className="w-full h-full object-cover" style={{ objectPosition: "center 50%" }}
-                priority
-              />
+        {/* Outer div only centers — no relative, so badges don't position against full-width column */}
+        <div className="flex items-center justify-center z-10 py-6">
+          {/* Inner relative wrapper sized to the photo — badges position against this */}
+          <div className="relative">
+            {/* Gradient ring */}
+            <div
+              className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full p-1"
+              style={{
+                background: "linear-gradient(135deg, #f72585 0%, #7209b7 50%, #4cc9f0 100%)",
+              }}
+            >
+              {/* Inner photo container */}
+              <div className="w-full h-full rounded-full overflow-hidden bg-[#fce7f3]">
+                <Image
+                  src="/images/select.png"
+                  alt="Joselin Montero"
+                  width={320}
+                  height={320}
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "center 50%" }}
+                  priority
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Small floating badge — React skill indicator */}
-          <div className="absolute -bottom-2 -left-4 bg-white rounded-2xl shadow-lg px-4 py-2 flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-brand inline-block" />
-            <span className="text-xs font-semibold text-gray-700">Software Engineer</span>
-          </div>
+            {/* Small floating badge — role indicator */}
+            <div className="absolute -bottom-2 -left-4 bg-white rounded-2xl shadow-lg px-4 py-2 flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-brand inline-block" />
+              <span className="text-xs font-semibold text-gray-700">{t.hero.badgeRole}</span>
+            </div>
 
-          {/* Experience badge */}
-          <div className="absolute -top-2 -right-2 bg-white rounded-2xl shadow-lg px-4 py-2">
-            <p className="text-xs text-gray-500">Experiencia</p>
-            <p className="text-sm font-bold text-brand">1+ año</p>
+            {/* Experience badge */}
+            <div className="absolute -top-2 -right-2 bg-white rounded-2xl shadow-lg px-4 py-2">
+              <p className="text-xs text-gray-500">{t.hero.expLabel}</p>
+              <p className="text-sm font-bold text-brand">{t.hero.expValue}</p>
+            </div>
           </div>
         </div>
       </div>
