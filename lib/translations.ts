@@ -39,7 +39,7 @@ export const translations = {
     projects: {
       eyebrow: "Portafolio",
       title: "Especializada en crear",
-      titleHighlight: "experiencias web bonitas",
+      titleHighlight: "experiencias web modernas",
       subtitle: "Proyectos que combinan buen diseño, arquitectura sólida y código limpio.",
       items: [
         {
@@ -50,12 +50,22 @@ export const translations = {
         {
           title: "Registro de Eventos",
           description:
-            "Módulo de registro y seguimiento de asistentes con reportes exportables y validación de datos en tiempo real.",
+            "Módulo de registro de asistentes para la plataforma EventPlus. Incluye formularios dinámicos con campos personalizados por evento, flujos de aprobación manual y automática, lista de espera con promoción automática, confirmación de asistencia vía enlace en correo, tiers de acceso (VIP, general), generación de códigos QR y sincronización en tiempo real con Firebase Firestore.",
         },
         {
           title: "Dashboard Analítico",
           description:
-            "Panel administrativo con métricas de eventos, visualizaciones de datos y gestión de roles de usuario.",
+            "Panel de métricas en tiempo real para organizadores de eventos dentro de EventPlus. Visualiza estados de registro (aprobados, pendientes, lista de espera, rechazados, confirmados) con gráficos Chart.js actualizados vía Firestore onSnapshot. Incluye seguimiento de check-in presencial y virtual, gestión de capacidad con alertas, sistema de tabs dinámico según la configuración del evento, y exportación personalizable a Excel con más de 20 tipos de campo.",
+        },
+        {
+          title: "Dark Mode",
+          description:
+            "Implementación de modo oscuro en EventPlus usando React Context API y Tailwind CSS. Se creó un ThemeContext global que persiste la preferencia del usuario y la aplica mediante clases dark: en todos los componentes de la plataforma, garantizando una transición fluida y coherente en más de 100 vistas y modales.",
+        },
+        {
+          title: "PetWare",
+          description:
+            "Plataforma fullstack de gestión de mascotas con rastreo GPS en tiempo real mediante dispositivos IoT (Adafruit IO), geofencing interactivo dibujado sobre mapas Mapbox, historial médico completo (vacunas, enfermedades, citas veterinarias), tienda con pagos PayPal, y dashboard de estadísticas con gráficos ECharts. Backend desplegado en AWS EC2 con CI/CD automatizado vía GitHub Actions y Docker.",
         },
       ],
     },
@@ -176,12 +186,22 @@ export const translations = {
         {
           title: "Event Registration",
           description:
-            "Module for attendee registration and tracking with exportable reports and real-time data validation.",
+            "Attendee registration module for the EventPlus platform. Features dynamic forms with per-event custom fields, manual and automatic approval workflows, waitlist with automatic promotion, attendance confirmation via email link, access tiers (VIP, general), QR code generation, and real-time sync with Firebase Firestore.",
         },
         {
           title: "Analytics Dashboard",
           description:
-            "Admin panel with event metrics, data visualizations, and user role management.",
+            "Real-time metrics panel for event organizers within EventPlus. Visualizes registration statuses (approved, pending, waitlist, rejected, confirmed) with Chart.js charts updated via Firestore onSnapshot. Includes onsite and virtual check-in tracking, capacity management with alerts, a dynamic tab system based on event configuration, and customizable Excel export with 20+ field types.",
+        },
+        {
+          title: "Dark Mode",
+          description:
+            "Dark mode implementation for EventPlus using React Context API and Tailwind CSS. A global ThemeContext was created to persist user preference and apply it via dark: classes across all platform components, ensuring smooth and consistent transitions across 100+ views and modals.",
+        },
+        {
+          title: "PetWare",
+          description:
+            "Fullstack pet management platform with real-time GPS tracking via IoT devices (Adafruit IO), interactive geofencing drawn on Mapbox maps, complete medical history (vaccines, diseases, vet appointments), PayPal-integrated store, and ECharts statistics dashboard. Backend deployed on AWS EC2 with automated CI/CD via GitHub Actions and Docker.",
         },
       ],
     },

@@ -18,7 +18,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const toggleLocale = () => setLocale((l) => (l === "es" ? "en" : "es"));
 
   return (
-    <LanguageContext.Provider value={{ locale, t: translations[locale], toggleLocale }}>
+    <LanguageContext.Provider value={{ locale, t: translations[locale] as Translations, toggleLocale }}>
       {children}
     </LanguageContext.Provider>
   );

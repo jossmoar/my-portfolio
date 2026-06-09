@@ -3,6 +3,9 @@
 // Sticky top navigation — collapses to hamburger on mobile
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Lobster } from "next/font/google";
+
+const script = Lobster({ subsets: ["latin"], weight: ["400"] });
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -20,9 +23,50 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Brand */}
-        <span className="text-xl font-bold text-[#1a1a2e]">
-          Jose<span className="text-brand">lin</span>
-        </span>
+        <a href="#inicio" className={`${script.className} flex items-center text-[2.1rem] font-bold select-none`}>
+          <style>{`
+            @keyframes jm-left {
+              0%, 100% { transform: translateX(0); }
+              45%, 55% { transform: translateX(-6px); }
+            }
+            @keyframes jm-right {
+              0%, 100% { transform: translateX(0); }
+              45%, 55% { transform: translateX(6px); }
+            }
+            @keyframes jm-star {
+              0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+              45%, 55% { transform: scale(1.5) rotate(35deg); opacity: 0.7; }
+            }
+            .jm-left {
+              animation: jm-left 6s ease-in-out infinite;
+              background: linear-gradient(to right, #f72585, #9b2fd4);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            }
+            .jm-right {
+              animation: jm-right 6s ease-in-out infinite;
+              background: linear-gradient(to right, #9b2fd4, #f77f00);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            }
+            .jm-star {
+              animation: jm-star 6s ease-in-out infinite;
+              display: inline-block;
+              background: linear-gradient(to bottom, #f72585, #f77f00);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              font-size: 0.55em;
+              margin: 0 3px;
+              line-height: 1;
+            }
+          `}</style>
+          <span className="jm-left">J</span>
+          <span className="jm-star">✦</span>
+          <span className="jm-right">M</span>
+        </a>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
