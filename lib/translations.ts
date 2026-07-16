@@ -10,6 +10,7 @@ export const translations = {
       experiencia: "Experiencia",
       contactame: "Contáctame",
       certificaciones: "Certificaciones",
+      catalogo: "Catálogo",
     },
     hero: {
       greeting: "Hola, soy",
@@ -41,6 +42,7 @@ export const translations = {
       title: "Especializada en crear",
       titleHighlight: "experiencias web modernas",
       subtitle: "Proyectos que combinan buen diseño, arquitectura sólida y código limpio.",
+      catalogCta: "Ver catálogo de apps en vivo",
       items: [
         {
           title: "App Móvil de Pasantías",
@@ -66,6 +68,23 @@ export const translations = {
           title: "PetWare",
           description:
             "Plataforma fullstack de gestión de mascotas con rastreo GPS en tiempo real mediante dispositivos IoT (Adafruit IO), geofencing interactivo dibujado sobre mapas Mapbox, historial médico completo (vacunas, enfermedades, citas veterinarias), tienda con pagos PayPal, y dashboard de estadísticas con gráficos ECharts. Backend desplegado en AWS EC2 con CI/CD automatizado vía GitHub Actions y Docker.",
+        },
+      ],
+    },
+    liveProjects: {
+      eyebrow: "Aplicaciones en vivo",
+      title: "Proyectos",
+      titleHighlight: "funcionando en producción",
+      subtitle:
+        "Aplicaciones reales, desplegadas y de código abierto — pruébelas usted mismo. Esta lista crece según vaya agregando proyectos nuevos.",
+      viewLive: "Ver en vivo",
+      viewCode: "Ver código",
+      backToPortfolio: "Volver al portafolio",
+      items: [
+        {
+          title: "Job Application Tracker",
+          description:
+            "Dashboard para organizar postulaciones de trabajo: contadores en vivo por estado, búsqueda y filtros, modal para agregar aplicaciones, interfaz bilingüe (ES/EN) y analíticas de uso con PostHog.",
         },
       ],
     },
@@ -146,6 +165,7 @@ export const translations = {
       experiencia: "Experience",
       contactame: "Contact me",
       certificaciones: "Certifications",
+      catalogo: "Catalog",
     },
     hero: {
       greeting: "Hi, I'm",
@@ -177,6 +197,7 @@ export const translations = {
       title: "Specialized in building",
       titleHighlight: "beautiful web experiences",
       subtitle: "Projects combining good design, solid architecture, and clean code.",
+      catalogCta: "See live app catalog",
       items: [
         {
           title: "Internship Mobile App",
@@ -202,6 +223,23 @@ export const translations = {
           title: "PetWare",
           description:
             "Fullstack pet management platform with real-time GPS tracking via IoT devices (Adafruit IO), interactive geofencing drawn on Mapbox maps, complete medical history (vaccines, diseases, vet appointments), PayPal-integrated store, and ECharts statistics dashboard. Backend deployed on AWS EC2 with automated CI/CD via GitHub Actions and Docker.",
+        },
+      ],
+    },
+    liveProjects: {
+      eyebrow: "Live applications",
+      title: "Projects",
+      titleHighlight: "running in production",
+      subtitle:
+        "Real, deployed, open-source applications — try them yourself. This list grows as new projects get added.",
+      viewLive: "View live",
+      viewCode: "View code",
+      backToPortfolio: "Back to portfolio",
+      items: [
+        {
+          title: "Job Application Tracker",
+          description:
+            "Dashboard for organizing job applications: live counters per status, search and filters, a modal for adding applications, a bilingual interface (ES/EN), and usage analytics with PostHog.",
         },
       ],
     },

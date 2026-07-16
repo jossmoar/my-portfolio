@@ -2,6 +2,7 @@
 
 // Projects section — infinite-loop carousel
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const PROJECT_META = [
@@ -182,6 +183,15 @@ export default function Projects() {
               }`}
             />
           ))}
+        </div>
+
+        <div className="text-center mt-10">
+          <Link
+            href="/catalogo"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:text-brand-dark transition-colors"
+          >
+            {t.projects.catalogCta} →
+          </Link>
         </div>
       </div>
     </section>

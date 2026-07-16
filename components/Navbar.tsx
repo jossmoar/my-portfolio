@@ -2,6 +2,8 @@
 
 // Sticky top navigation — collapses to hamburger on mobile
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Lobster } from "next/font/google";
 
@@ -10,6 +12,14 @@ const script = Lobster({ subsets: ["latin"], weight: ["400"] });
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { t, locale, toggleLocale } = useLanguage();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Section anchors only exist on the homepage — from any other route
+  // (e.g. /catalogo) they need the leading "/" so the browser navigates
+  // back to "/" first, instead of silently no-op'ing against a hash that
+  // doesn't exist on the current page.
+  const sectionHref = (hash: string) => (isHome ? hash : `/${hash}`);
 
   const navLinks = [
     { label: t.nav.inicio, href: "#inicio" },
@@ -23,7 +33,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Brand */}
-        <a href="#inicio" className={`${script.className} flex items-center text-[2.1rem] font-bold select-none`}>
+        <Link href="/" className={`${script.className} flex items-center text-[2.1rem] font-bold select-none`}>
           <style>{`
             @keyframes jm-left {
               0%, 100% { transform: translateX(0); }
@@ -38,21 +48,21 @@ export default function Navbar() {
               45%, 55% { transform: scale(1.5) rotate(35deg); opacity: 0.7; }
             }
             .jm-left {
-              animation: jm-left 6s ease-in-out infinite;
+              animation: jm-left 17s ease-in-out infinite;
               background: linear-gradient(to right, #f72585, #9b2fd4);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
               background-clip: text;
             }
             .jm-right {
-              animation: jm-right 6s ease-in-out infinite;
+              animation: jm-right 17s ease-in-out infinite;
               background: linear-gradient(to right, #9b2fd4, #f77f00);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
               background-clip: text;
             }
             .jm-star {
-              animation: jm-star 6s ease-in-out infinite;
+              animation: jm-star 17s ease-in-out infinite;
               display: inline-block;
               background: linear-gradient(to bottom, #f72585, #f77f00);
               -webkit-background-clip: text;
@@ -66,20 +76,28 @@ export default function Navbar() {
           <span className="jm-left">J</span>
           <span className="jm-star">✦</span>
           <span className="jm-right">M</span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
-                href={link.href}
+                href={sectionHref(link.href)}
                 className="text-sm font-medium text-gray-600 hover:text-brand transition-colors"
               >
                 {link.label}
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              href="/catalogo"
+              className="text-sm font-medium text-gray-600 hover:text-brand transition-colors"
+            >
+              {t.nav.catalogo}
+            </Link>
+          </li>
         </ul>
 
         {/* Desktop right actions */}
@@ -94,7 +112,7 @@ export default function Navbar() {
           </button>
 
           <a
-            href="#contacto"
+            href={sectionHref("#contacto")}
             className="inline-flex items-center px-5 py-2 rounded-full bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors"
           >
             {t.nav.contactame}
@@ -120,7 +138,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
-                  href={link.href}
+                  href={sectionHref(link.href)}
                   className="block text-sm font-medium text-gray-700 hover:text-brand"
                   onClick={() => setOpen(false)}
                 >
@@ -128,9 +146,18 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
+            <li>
+              <Link
+                href="/catalogo"
+                className="block text-sm font-medium text-gray-700 hover:text-brand"
+                onClick={() => setOpen(false)}
+              >
+                {t.nav.catalogo}
+              </Link>
+            </li>
             <li className="flex items-center gap-3 pt-1">
               <a
-                href="#contacto"
+                href={sectionHref("#contacto")}
                 className="inline-flex items-center px-5 py-2 rounded-full bg-brand text-white text-sm font-semibold"
                 onClick={() => setOpen(false)}
               >
