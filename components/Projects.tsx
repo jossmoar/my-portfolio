@@ -61,7 +61,7 @@ export default function Projects() {
   const dotActive = (current - total + total * 10) % total;
 
   return (
-    <section id="proyectos" className="py-16 md:py-24 bg-white">
+    <section id="proyectos" className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center mb-14">

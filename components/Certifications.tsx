@@ -37,7 +37,7 @@ export default function Certifications() {
   const c = t.certifications;
 
   return (
-    <section id="certificaciones" className="py-16 md:py-24 bg-white">
+    <section id="certificaciones" className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center mb-14">

@@ -52,7 +52,7 @@ export default function Skills() {
   ];
 
   return (
-    <section id="habilidades" className="py-16 md:py-24 bg-white">
+    <section id="habilidades" className="py-16  bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-14">

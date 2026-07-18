@@ -20,7 +20,7 @@ export const translations = {
       ctaCv: "Descargar CV",
       badgeRole: "Software Engineer",
       expLabel: "Experiencia",
-      expValue: "1+ año",
+      expValue: "2+ años",
     },
     skills: {
       eyebrow: "Tecnologías",
@@ -175,7 +175,7 @@ export const translations = {
       ctaCv: "Download CV",
       badgeRole: "Software Engineer",
       expLabel: "Experience",
-      expValue: "1+ year",
+      expValue: "2+ years",
     },
     skills: {
       eyebrow: "Technologies",
